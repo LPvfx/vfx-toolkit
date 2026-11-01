@@ -71,6 +71,12 @@ Installed editable, so changes in `src/` take effect immediately. Add a new
 tool by dropping a module with a `main()` in `src/vfxtk/` and adding it to
 `[project.scripts]` in `pyproject.toml`, then rerun `./bootstrap.sh --tools`.
 
+## Radar
+
+`radar/` holds a weekly digest of GenAI / computer vision / ML relevant to VFX,
+plus a [watchlist](radar/watchlist.md) of things worth trying. A scheduled
+Claude task updates it every Saturday.
+
 ## Tests
 
 ```bash
