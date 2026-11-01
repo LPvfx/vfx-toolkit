@@ -1,0 +1,40 @@
+[project]
+name = "vfxtk"
+version = "0.1.0"
+description = "Small, sharp CLI tools for VFX/CG image, video and USD work"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "OpenImageIO>=3.0",
+    "opencolorio>=2.4",
+    "OpenEXR>=3.3",
+    "usd-core>=25.5",
+    "numpy>=1.26",
+    "rich>=13",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+seqinfo = "vfxtk.seqinfo:main"
+layers = "vfxtk.layers:main"
+contact = "vfxtk.contact:main"
+exr2proxy = "vfxtk.exr2proxy:main"
+ocio-convert = "vfxtk.ocio_convert:main"
+usdinfo = "vfxtk.usdinfo:main"
+vidprep = "vfxtk.vidprep:main"
+vfxtk = "vfxtk.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vfxtk"]
+
+[tool.ruff]
+line-length = 110
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
