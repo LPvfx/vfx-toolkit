@@ -14,4 +14,5 @@ short summary as a Claude chat.
 
 ## Editions
 
+- [2026-11-07](2026-11-07.md): Blender 5.3 native splats + add-ons, StarLightGS (UE relit splats), Holo4D, official TouchDesigner MCP; MiniMax H3 family flagged (licence excludes the UK)
 - [2026-11-01](2026-11-01.md): baseline sweep (video gen, splats, roto/depth, faces, world models, MCPs, synthetic data)
