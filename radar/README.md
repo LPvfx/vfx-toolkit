@@ -14,5 +14,6 @@ short summary as a Claude chat.
 
 ## Editions
 
+- [2026-11-14](2026-11-14.md): Unreal 5.9 Preview goes agentic (MCP client, Claude Code, Canvas), Blender 5.3 ships splats, RelayVSR upscaler, PVDepth 360 depth, Atlas/Echo-3 splat services open; three mini projects
 - [2026-11-07](2026-11-07.md): Blender 5.3 native splats + add-ons, StarLightGS (UE relit splats), Holo4D, official TouchDesigner MCP; MiniMax H3 family flagged (licence excludes the UK)
 - [2026-11-01](2026-11-01.md): baseline sweep (video gen, splats, roto/depth, faces, world models, MCPs, synthetic data)
