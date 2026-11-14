@@ -17,6 +17,7 @@ Columns:
 | Pixal3D-mac / pixal3d-mlx | image → PBR asset; the MLX port needs no PyTorch (1024 res needs all 64GB) | mac | MIT + DINOv3 | https://github.com/pawel-mazurkiewicz/Pixal3D-mac · https://github.com/lyonsno/pixal3d-mlx |
 | Blender 5.3 splats (released 10 Nov) | native splats (PLY/SPZ/glTF import) in Cycles/EEVEE; SplatPatch turns CG meshes into splats; no splat export yet | mac | GPL | https://developer.blender.org/docs/release_notes/5.3/ |
 | Derivative TDMCP | official TouchDesigner MCP: Claude builds and inspects networks | mac (likely) | Shared Use | https://github.com/TouchDesigner/TDMCP |
+| SAM 3.1 (MLX) | text-prompted roto seeds locally; pairs with TDMCP for live masks (unverified port) | mac (likely) | SAM (gated) | https://huggingface.co/mlx-community/sam3.1-bf16 |
 | MatAnyone 2 (Core ML) | hair-quality mattes | mac | NC | https://github.com/pq-yang/MatAnyone2 |
 
 ## Rent a GPU for
@@ -63,3 +64,5 @@ Columns:
 7. **360 depth for the dome.**
    - PVDepth on an equirect plate (rented 48GB card) vs DA3 per cube face.
    - Drive displacement and parallax in TouchDesigner; look for seam and pole flicker.
+8. **Splat interchange test.** One VGGT-Ω/DA3 → gsplat-mlx splat as an OpenUSD 26.03 prim, opened in Houdini 22, Blender 5.3 and Nuke 17.1; record what survives (orientation, SH, scale, colour space).
+9. **Generative vs reconstructive reshoot.** ReCamMaster/Holo4D new camera path vs VGGT-Ω splat re-render of the same plate; compare parallax, stability and comp-fixability.
