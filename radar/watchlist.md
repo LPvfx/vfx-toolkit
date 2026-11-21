@@ -15,7 +15,9 @@ Columns:
 | VGGT-Ω | cameras and points from video without COLMAP | mac (inference) | check | https://github.com/facebookresearch/vggt-omega |
 | gsplat-mlx | train splats locally | mac | check | https://github.com/RobotFlow-Labs/gsplat-mlx |
 | Pixal3D-mac / pixal3d-mlx | image → PBR asset; the MLX port needs no PyTorch (1024 res needs all 64GB) | mac | MIT + DINOv3 | https://github.com/pawel-mazurkiewicz/Pixal3D-mac · https://github.com/lyonsno/pixal3d-mlx |
-| Blender 5.3 splats (released 10 Nov) | native splats (PLY/SPZ/glTF import) in Cycles/EEVEE; SplatPatch turns CG meshes into splats; no splat export yet | mac | GPL | https://developer.blender.org/docs/release_notes/5.3/ |
+| Blender 5.3 splats (released 10 Nov) | native splats (PLY/SPZ/glTF import) in Cycles/EEVEE; SplatPatch turns CG meshes into splats; export via the Splat Studio add-on ($12.99, GPL) | mac | GPL | https://developer.blender.org/docs/release_notes/5.3/ · https://radiancefields.com/splat-studio-brings-splat-editing-to-blender-5-3 |
+| Idol (idol-sdk-mlx) | one image → splat object (up to ~1M Gaussians), ~7.2GB peak; the splat counterpart to Pixal3D | mac | Apache 2.0 (secondary) + DINOv3/FLUX.2 gated | https://github.com/ivanfioravanti/idol-sdk-mlx |
+| Depth Pro 2 | metric video and live depth plus focal estimation; Core ML and a Mac live demo; test against DA3 | mac | NC (Apple research) | https://github.com/apple-aiml-research/ml-depth-pro-2 |
 | Derivative TDMCP | official TouchDesigner MCP: Claude builds and inspects networks | mac (likely) | Shared Use | https://github.com/TouchDesigner/TDMCP |
 | SAM 3.1 (MLX) | text-prompted roto seeds locally; pairs with TDMCP for live masks (unverified port) | mac (likely) | SAM (gated) | https://huggingface.co/mlx-community/sam3.1-bf16 |
 | MatAnyone 2 (Core ML) | hair-quality mattes | mac | NC | https://github.com/pq-yang/MatAnyone2 |
@@ -32,6 +34,9 @@ Columns:
 | RelayVSR (ComfyUI 0.45) | streaming 4×/2× video upscaler on Wan 2.2 5B; test against SeedVR2 | Apache 2.0 | https://huggingface.co/Comfy-Org/RelayVSR |
 | PVDepth | temporally stable depth for equirect/360 video, for domes and immersive work; ~31GB (or ~10GB offloaded) | check (research + DepthCrafter terms) | https://github.com/ChuanxinSong/PVDepth |
 | Holo4D | 4D recon (VGGT-Ω) as geometric control for Wan, for reshoots and plate extension; the 14B peaks around 49GB, so rent an 80GB card | Apache code; check weights | https://github.com/NIRVANALAN/Holo4D |
+| ComfyUI 0.46 Video Deflicker | RAFT-based deflicker for generated or upscaled plates | ok (core) | https://freedom.tech/posts/2026-11-18-comfyui-0-46-0/ |
+| PAN 2 (native in ComfyUI 0.46) | 29B world model, up to 20 s clips, for long previs and environments; int8 26.7GB | check | https://huggingface.co/Comfy-Org/PAN2 |
+| LongCat-Video-Avatar 1.6 | MIT audio-driven talking heads for temp dialogue and previs; 13.6B | MIT | https://huggingface.co/meituan-longcat/LongCat-Video-Avatar |
 
 ## Weekend projects
 
@@ -66,3 +71,8 @@ Columns:
    - Drive displacement and parallax in TouchDesigner; look for seam and pole flicker.
 8. **Splat interchange test.** One VGGT-Ω/DA3 → gsplat-mlx splat as an OpenUSD 26.03 prim, opened in Houdini 22, Blender 5.3 and Nuke 17.1; record what survives (orientation, SH, scale, colour space).
 9. **Generative vs reconstructive reshoot.** ReCamMaster/Holo4D new camera path vs VGGT-Ω splat re-render of the same plate; compare parallax, stability and comp-fixability.
+10. **Nuke track → splat on the Mac.**
+    - Take a CameraTracker solve from a real shot and export cameras and points to COLMAP (the DBS_SplatTrain recipe, which is Windows-only for now).
+    - Train with Brush or gsplat-mlx on the Mac, and bring the `.ply` back aligned to the track camera.
+    - Compare with a VGGT-Ω solve of the same plate, and see whether Depth Pro 2 metric depth helps scale.
+    - Tests whether splats can come straight out of the matchmove you already have.
